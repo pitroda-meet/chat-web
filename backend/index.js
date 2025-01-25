@@ -21,6 +21,9 @@ app.use(cookieParser());
 
 app.use("/api/v1/users", userRoute);
 app.use("/api/v1/message", messageRoute);
+app.get("/", (req, res) => {
+  res.send("API is running....");
+});
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   connectDB();
