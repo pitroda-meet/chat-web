@@ -14,7 +14,6 @@ app.use(
     origin: `${process.env.CLIENT_URL}`, // Frontend origin
     credentials: true, // Allow cookies and credentials
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
   })
 );
 
