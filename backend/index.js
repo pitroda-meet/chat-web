@@ -11,8 +11,10 @@ import cors from "cors";
 
 app.use(
   cors({
-    origin: `https://chatingweb.vercel.app`,
-    credentials: true,
+    origin: "https://chatingweb.vercel.app", // Frontend origin
+    credentials: true, // Allow cookies and credentials
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
   })
 );
 
