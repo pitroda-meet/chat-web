@@ -15,11 +15,10 @@ const Login = () => {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("API Base URL:", import.meta.env.APIURL);
 
     try {
       const res = await axios.post(
-        `${import.meta.env.APIURL}/api/v1/users/login`,
+        `http://localhost:8080/api/v1/users/login`,
         user,
         {
           headers: {
