@@ -8,9 +8,16 @@ const useGetMessages = () => {
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        axios.defaults.withCredentials = true;
+        // axios.defaults.withCredentials = true;
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/api/v1/message/${selectedUser?._id}`
+          `${import.meta.env.VITE_API_URL}/api/v1/message/${selectedUser?._id}`,
+          {
+            headers: {
+              "Content-Type": "application/json",
+            },
+
+            withCredentials: true,
+          }
         );
         dispatch(setMessages(response.data));
       } catch (error) {
