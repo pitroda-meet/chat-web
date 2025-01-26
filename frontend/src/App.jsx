@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     if (authUser) {
-      const socket = io("http://localhost:8080", {
+      const socket = io(`${process.meta.env.VITE_API_URL}`, {
         query: { userId: authUser._id },
         withCredentials: true,
       });
