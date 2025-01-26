@@ -11,7 +11,7 @@ import cors from "cors";
 
 app.use(
   cors({
-    origin: `https://chatingweb.vercel.app`,
+    origin: `https://chatingweb.vercel.app/`,
     credentials: true,
   })
 );
