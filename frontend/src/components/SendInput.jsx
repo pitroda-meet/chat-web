@@ -12,7 +12,7 @@ const SendInput = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${import.meta.env.apiurl}/api/v1/message/send/${selectedUser?._id}`,
+        `${import.meta.env.APIURL}/api/v1/message/send/${selectedUser?._id}`,
         { message },
         {
           headers: {

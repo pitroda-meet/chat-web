@@ -12,7 +12,7 @@ const useGetContactUser = () => {
       try {
         axios.defaults.withCredentials = true;
         const response = await axios.get(
-          `${import.meta.env.apiurl}/api/v1/users/contacts`
+          `${import.meta.env.APIURL}/api/v1/users/contacts`
         );
         if (response.status === 200) {
           dispatch(setOtherUser(response.data.contacts));

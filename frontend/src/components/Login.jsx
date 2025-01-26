@@ -10,13 +10,16 @@ const Login = () => {
     email: "",
     password: "",
   });
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("API Base URL:", import.meta.env.APIURL);
+
     try {
       const res = await axios.post(
-        `${import.meta.env.apiurl}/api/v1/users/login`,
+        `${import.meta.env.APIURL}/api/v1/users/login`,
         user,
         {
           headers: {

@@ -10,7 +10,7 @@ const useGetMessages = () => {
       try {
         axios.defaults.withCredentials = true;
         const response = await axios.get(
-          `${import.meta.env.apiurl}/api/v1/message/${selectedUser?._id}`
+          `${import.meta.env.APIURL}/api/v1/message/${selectedUser?._id}`
         );
         dispatch(setMessages(response.data));
       } catch (error) {

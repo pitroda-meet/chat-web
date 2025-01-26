@@ -27,7 +27,7 @@ const Sidebar = () => {
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.get(
-        `${import.meta.env.apiurl}/api/v1/users/logout`
+        `${import.meta.env.APIURL}/api/v1/users/logout`
       );
       if (res.status === 200) {
         toast.success(res.data.message);
@@ -48,7 +48,7 @@ const Sidebar = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        `${import.meta.env.apiurl}/api/v1/users/addcontact`,
+        `${import.meta.env.APIURL}/api/v1/users/addcontact`,
         { contactEmail },
         {
           headers: {
