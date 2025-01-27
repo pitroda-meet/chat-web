@@ -35,7 +35,17 @@ export const register = async (req, res) => {
     return res.status(500).json({ message: "Server error" });
   }
 };
+export const verifyUser = async (req) => {
+  try {
+    if (req.id) {
+      return res.status(500).json({ message: "Server error" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: "Server error" });
 
+    console.error(error);
+  }
+};
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
