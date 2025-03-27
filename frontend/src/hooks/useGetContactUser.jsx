@@ -6,7 +6,7 @@ import { setOtherUser } from "../redux/userSlice";
 
 const useGetContactUser = () => {
   const dispatch = useDispatch();
-
+  const { otherUsers } = useSelector((state) => state.user);
   useEffect(() => {
     const FetchContactUsers = async () => {
       try {
@@ -35,7 +35,8 @@ const useGetContactUser = () => {
     };
 
     FetchContactUsers();
-  }, []);
+    return FetchContactUsers;
+  }, [otherUsers]);
 };
 
 export default useGetContactUser;
