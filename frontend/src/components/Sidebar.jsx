@@ -65,6 +65,7 @@ const Sidebar = () => {
         if (newContact) {
           dispatch(setOtherUser([...otherUsers, newContact]));
         }
+
         setContactEmail("");
         closeModal();
       }
@@ -73,23 +74,14 @@ const Sidebar = () => {
       toast.error(error.response?.data?.message || "Error adding contact");
     }
   };
+  useEffect(() => {
+    if (authUser == null) {
+      navigate("/login");
+    }
+  }, [authUser, navigate]);
 
   return (
     <div className="flex flex-col p-4 border-r bg-stone-50 border-slate-900">
-      {/* Search Form */}
-      <form className="flex items-center gap-2">
-        <input
-          type="text"
-          className="rounded-lg input input-bordered"
-          placeholder="Search.."
-        />
-        <button type="submit" className="btn bg-slate-500">
-          <FaSearch />
-        </button>
-      </form>
-
-      <div className="divider"></div>
-
       <OtherUsers />
 
       <div className="flex flex-col gap-2 mt-4">
