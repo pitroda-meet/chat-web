@@ -24,18 +24,22 @@ const Login = () => {
           headers: {
             "Content-Type": "application/json",
           },
-          withCredentials: true,
+          withCredentials: true, // Needed for cookies
         }
       );
+
       if (res.data.success) {
+        const { token, ...userData } = res.data; // Extract token separately
+        localStorage.setItem("token", token); // Store token locally
+        dispatch(setAuthUser({ user: userData, token })); // Save to Redux
         toast.success(res.data.message);
         navigate("/");
       }
-      dispatch(setAuthUser(res.data));
     } catch (error) {
-      toast.error(error.response.data.message);
+      toast.error(error.response?.data?.message || "Login failed");
       console.error(error);
     }
+
     setUser({
       email: "",
       password: "",

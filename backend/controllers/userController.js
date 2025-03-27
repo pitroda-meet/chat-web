@@ -70,11 +70,12 @@ export const login = async (req, res) => {
       .status(200)
       .cookie("token", token, {
         maxAge: 1 * 24 * 60 * 60 * 1000,
-        httpsOnly: true,
+        httpOnly: true,
         sameSite: "strict",
       })
       .json({
         message: "Logged in successfully",
+        token, // Add this line to send the token in response
         _id: user._id,
         fullName: user.fullName,
         profilePhoto: user.profilePhoto,
