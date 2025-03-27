@@ -39,6 +39,9 @@ const Sidebar = () => {
         dispatch(setMessages(null));
         dispatch(setSelectedUser(null));
         dispatch(setOnlineUsers(null));
+        dispatch(logoutUser());
+        localStorage.removeItem("authUser");
+        localStorage.removeItem("token");
 
         navigate("/login");
       }
