@@ -30,8 +30,14 @@ const userSlice = createSlice({
     logoutUser: (state) => {
       state.authUser = null;
       state.token = null;
+      state.otherUsers = [];
+      state.selectedUser = null;
+      state.onlineUsers = null;
+
+      // Ensure localStorage is cleared
       localStorage.removeItem("authUser");
       localStorage.removeItem("token");
+      localStorage.removeItem("persist:root");
     },
   },
 });

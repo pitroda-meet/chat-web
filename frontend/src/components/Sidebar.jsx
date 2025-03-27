@@ -28,20 +28,23 @@ const Sidebar = () => {
       axios.defaults.withCredentials = true;
       const res = await axios.get(
         `${import.meta.env.VITE_API_URL}/api/v1/users/logout`,
-        {
-          withCredentials: true,
-        }
+        { withCredentials: true }
       );
+
       if (res.status === 200) {
         toast.success(res.data.message);
+
+        // Dispatch Redux actions to reset user state
         dispatch(setOtherUser([]));
-        dispatch(setAuthUser(null));
         dispatch(setMessages(null));
         dispatch(setSelectedUser(null));
         dispatch(setOnlineUsers(null));
-        dispatch(logoutUser());
+        dispatch(logoutUser()); // Reset Redux user state
+
+        // Clear all local storage including persisted Redux state
         localStorage.removeItem("authUser");
         localStorage.removeItem("token");
+        localStorage.removeItem("persist:root"); // Clear Redux persisted state
 
         navigate("/login");
       }
@@ -49,6 +52,7 @@ const Sidebar = () => {
       toast.error(error.message);
     }
   };
+
   const [contactEmail, setContactEmail] = useState("");
   const submithandler = async (e) => {
     e.preventDefault();
