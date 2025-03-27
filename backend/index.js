@@ -11,9 +11,10 @@ import cors from "cors";
 
 app.use(
   cors({
-    origin: `${process.env.CLIENT_URL}`, // Frontend origin
-    credentials: true, // Allow cookies and credentials
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed methods
+    origin: process.env.CLIENT_URL, // Frontend domain
+    credentials: true, // Allow cookies
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"], // Ensure proper headers
   })
 );
 
