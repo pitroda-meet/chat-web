@@ -17,17 +17,16 @@ const useGetContactUser = () => {
             headers: {
               "Content-Type": "application/json",
             },
+            withCredentials: true, // Required to send cookies
           }
         );
+
         if (response.status === 200) {
           dispatch(setOtherUser(response.data.contacts));
         }
       } catch (error) {
-        // Display error message to user
         toast.error(
-          error.response?.data?.message ||
-            error.message ||
-            "An error occurred while fetching contact users"
+          error.response?.data?.message || "Failed to fetch contacts"
         );
       }
     };
