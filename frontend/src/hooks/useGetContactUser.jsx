@@ -10,15 +10,13 @@ const useGetContactUser = () => {
   useEffect(() => {
     const FetchContactUsers = async () => {
       try {
-        // axios.defaults.withCredentials = true;
+        axios.defaults.withCredentials = true;
         const response = await axios.get(
           `${import.meta.env.VITE_API_URL}/api/v1/users/contacts`,
           {
             headers: {
               "Content-Type": "application/json",
             },
-
-            withCredentials: true,
           }
         );
         if (response.status === 200) {
