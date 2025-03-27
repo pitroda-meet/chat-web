@@ -69,7 +69,7 @@ const Signup = () => {
             <span className="text-base label-text">password</span>
           </label>
           <input
-            type="text"
+            type="password"
             className="w-full h-10 input input-bordered"
             placeholder="enter password"
             value={user.password}
@@ -79,7 +79,7 @@ const Signup = () => {
             <span className="text-base label-text">cornfirm password</span>
           </label>
           <input
-            type="text"
+            type="password"
             className="w-full h-10 input input-bordered"
             placeholder="enter cornfirm password"
             value={user.confirmPassword}
