@@ -30,7 +30,8 @@ const Login = () => {
 
       if (res.data.success) {
         const { token, ...userData } = res.data; // Extract token separately
-        localStorage.setItem("token", token); // Store token locally
+        localStorage.setItem("token", res.data.token); // Store token locally
+
         dispatch(setAuthUser({ user: userData, token })); // Save to Redux
         toast.success(res.data.message);
         navigate("/");

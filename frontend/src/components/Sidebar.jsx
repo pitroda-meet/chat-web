@@ -5,13 +5,13 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {
+  logoutUser,
   setAuthUser,
   setOnlineUsers,
   setOtherUser,
   setSelectedUser,
 } from "../redux/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import useGetContactUser from "../hooks/useGetContactUser";
 import { setMessages } from "../redux/messageSlice";
 const Sidebar = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -33,6 +33,7 @@ const Sidebar = () => {
 
       if (res.status === 200) {
         toast.success(res.data.message);
+        localStorage.clear();
 
         // Dispatch Redux actions to reset user state
         dispatch(setOtherUser([]));
@@ -42,9 +43,6 @@ const Sidebar = () => {
         dispatch(logoutUser()); // Reset Redux user state
 
         // Clear all local storage including persisted Redux state
-        localStorage.removeItem("authUser");
-        localStorage.removeItem("token");
-        localStorage.removeItem("persist:root"); // Clear Redux persisted state
 
         navigate("/login");
       }
