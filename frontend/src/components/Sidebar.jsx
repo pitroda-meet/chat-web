@@ -27,7 +27,10 @@ const Sidebar = () => {
     try {
       axios.defaults.withCredentials = true;
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL}/api/v1/users/logout`
+        `${import.meta.env.VITE_API_URL}/api/v1/users/logout`,
+        {
+          withCredentials: true,
+        }
       );
       if (res.status === 200) {
         toast.success(res.data.message);
@@ -47,6 +50,8 @@ const Sidebar = () => {
   const submithandler = async (e) => {
     e.preventDefault();
     try {
+      axios.defaults.withCredentials = true;
+
       const res = await axios.post(
         `${import.meta.env.VITE_API_URL}/api/v1/users/addcontact`,
         { contactEmail },
