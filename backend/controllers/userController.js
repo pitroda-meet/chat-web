@@ -69,16 +69,13 @@ export const login = async (req, res) => {
     res
       .status(200)
       .cookie("token", token, {
-        maxAge: 1 * 24 * 60 * 60 * 1000,
-        httpOnly: true,
-        sameSite: "strict",
+        maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
+        httpOnly: true, // Prevent XSS attacks
+        secure: process.env.NODE_ENV === "production", // Only secure in production
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "lax", // Fix cross-domain issues
       })
       .json({
         message: "Logged in successfully",
-        token, // Add this line to send the token in response
-        _id: user._id,
-        fullName: user.fullName,
-        profilePhoto: user.profilePhoto,
         success: true,
       });
   } catch (error) {
